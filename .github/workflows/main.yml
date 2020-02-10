@@ -8,6 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Create docker image
-        run: docker-compose build .
+        run: docker-compose build
       - name: Test the code
         run: docker-compose run app sh -c "python manage.py test && flake8"
