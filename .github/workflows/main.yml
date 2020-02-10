@@ -1,0 +1,13 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create docker image
+        run: docker-compose build .
+      - name: Test the code
+        run: docker-compose run app sh -c "python manage.py test && flake8"
